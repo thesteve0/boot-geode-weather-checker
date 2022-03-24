@@ -8,27 +8,16 @@
         <version>2.5.8</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.molw</groupId>
-    <artifactId>digicurrencyChecker</artifactId>
+    <groupId>com.vmware.tanzu</groupId>
+    <artifactId>WeatherChecker</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>digicurrency_checker</name>
-    <description>The piece of the demo that fetches currency prices</description>
+    <name>weather_checker</name>
+    <description>simple app that checks weather from a public API and then puts it into a geode cache</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <spring-geode.version>1.5.2</spring-geode.version>
     </properties>
-    <dependencies>
-        <dependency>
-            <!-- jsoup HTML parser library @ https://jsoup.org/ -->
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.14.3</version>
-        </dependency>
-        <!--        <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-amqp</artifactId>
-                </dependency>
-        -->
+    <dependencies>               
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -64,14 +53,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-
-        <!--        <dependency>
-                    <groupId>org.springframework.amqp</groupId>
-                    <artifactId>spring-rabbit-test</artifactId>
-                    <scope>test</scope>
-                </dependency>
-        -->
     </dependencies>
 <dependencyManagement>
         <dependencies>

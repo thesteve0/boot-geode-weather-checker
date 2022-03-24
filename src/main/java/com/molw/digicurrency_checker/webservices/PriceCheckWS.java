@@ -12,18 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class PriceCheckWS {
 
 	@GetMapping("/")
-	public PriceCheck checkThePrice(){
+	public PriceCheck checkTheWeather(){
 		double price = DellCameraScraper.scrapeSite();
 		PriceCheck pc = new PriceCheck(price);
 		return pc;
 	}
 
-	@GetMapping("/currency")
-	public DigitalCurrencies getDigitaCurrencyQuotes(){
-		  DigiCurrencyFetcher dcFetcher = new DigiCurrencyFetcher();
-		  return dcFetcher.getQuotes();
-		  		
-	}
 
 	@GetMapping("/health")
 	public String amIHealthy(){
