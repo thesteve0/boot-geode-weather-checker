@@ -1,7 +1,6 @@
-package com.molw.digicurrency_checker.cli;
+package com.molw.weather_checker.cli;
 
-import com.molw.digicurrency_checker.sources.DigiCurrencyFetcher;
-import org.springframework.boot.CommandLineRunner;
+import com.molw.weather_checker.sources.WeatherFetcher;
 import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -10,12 +9,12 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 @Profile(value= "!dev" )
-public class DigiCurrencyCoordinator {
+public class WeatherCoordinator {
 
     @Scheduled(fixedRate = 5, timeUnit = TimeUnit.SECONDS)
     public void run() throws Exception {
-        DigiCurrencyFetcher dcFetcher = new DigiCurrencyFetcher();
-        System.out.println( dcFetcher.getQuotes().toString());
+        WeatherFetcher weatherFetcher = new WeatherFetcher();
+        System.out.println( weatherFetcher.getWeather().toString());
 
         /* TODO now we are ready for gemfire integration
         once we get the data back we should just go ahead and push the data to gemfire
