@@ -1,7 +1,6 @@
 package com.molw.weather_checker.webservices;
 
 
-import com.molw.weather_checker.data.Weather;
 import com.molw.weather_checker.data.WeatherReadings;
 import com.molw.weather_checker.sources.WeatherFetcher;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +17,10 @@ public class WeatherCheckWS {
 	}
 
 	@GetMapping("/test")
-	public Weather checkOneWeather(){
+	public String checkOneWeather(){
 		WeatherFetcher wf = new WeatherFetcher();
-		Weather response = wf.getOnePlace();
+		//WeatherReading response = wf.getOnePlace();
+		String response = wf.getOnePlace();
 
 		return response;
 	}

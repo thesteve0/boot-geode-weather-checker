@@ -12,7 +12,7 @@
     <artifactId>WeatherChecker</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>weather_checker</name>
-    <description>simple app that checks weather from a public API and then puts it into a geode cache</description>
+    <description>simple app that checks weatherReading from a public API and then puts it into a geode cache</description>
     <properties>
         <java.version>17</java.version>
         <spring-geode.version>1.5.2</spring-geode.version>

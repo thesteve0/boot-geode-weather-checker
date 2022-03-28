@@ -1,5 +1,5 @@
 # Weather Checker
-This is a simple Application that is intended to show using Spring Boot with Spring Data for Geode in a client server configuration. It fetches weather data from an API and then, using annotation inserts it into the Geode cache. 
+This is a simple Application that is intended to show using Spring Boot with Spring Data for Geode in a client server configuration. It fetches weatherReading data from an API and then, using annotation inserts it into the Geode cache. 
 
 
 It requires an environment variable:

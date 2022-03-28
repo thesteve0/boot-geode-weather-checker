@@ -10,7 +10,7 @@ https://p.nomics.com/cryptocurrency-bitcoin-api
  */
 
 import com.molw.weather_checker.data.WeatherReadings;
-import com.molw.weather_checker.data.Weather;
+import com.molw.weather_checker.data.WeatherReading;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -42,25 +42,26 @@ public class WeatherFetcher {
 	//TODO given the API I think this will have to be a loop of calls rather than just one call
 	public WeatherReadings getWeather(){
 		WeatherReadings currentWeathers = new WeatherReadings();
-		Mono<Weather> response = webClient.get().accept(MediaType.APPLICATION_JSON)
+		Mono<WeatherReading> response = webClient.get().accept(MediaType.APPLICATION_JSON)
 				.retrieve()
-				.bodyToMono(new ParameterizedTypeReference<Weather>() {});
+				.bodyToMono(new ParameterizedTypeReference<WeatherReading>() {});
 
-		// currentPrices.setQuotes( (ArrayList<Weather>) response.block());
+		// currentPrices.setQuotes( (ArrayList<WeatherReading>) response.block());
 
 
 		return currentWeathers;
 		
 	}
 
-	public Weather getOnePlace(){
-
-		Weather weather = new Weather();
-		Mono<Weather> response = webClient.get().accept(MediaType.APPLICATION_JSON)
+	public String getOnePlace(){
+		String response = "";
+		WeatherReading weatherReading = new WeatherReading();
+		Mono<String> monoResponse = webClient.get().accept(MediaType.APPLICATION_JSON)
 				.retrieve()
-				.bodyToMono(new ParameterizedTypeReference<Weather>() {});
+				.bodyToMono(String.class);
 
-		return weather;
+		response = monoResponse.block();
+		return response;
 
 	}
 

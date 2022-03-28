@@ -5,21 +5,21 @@ import java.util.ArrayList;
 
 public class WeatherReadings {
 
-	private ArrayList<Weather> weathers = new ArrayList<Weather>();
+	private ArrayList<WeatherReading> weatherReadings = new ArrayList<WeatherReading>();
 	private final ZonedDateTime checkTime = ZonedDateTime.now();
 
-	public WeatherReadings(ArrayList<Weather> weathers) {
-		this.weathers = weathers;
+	public WeatherReadings(ArrayList<WeatherReading> weatherReadings) {
+		this.weatherReadings = weatherReadings;
 	}
 
 	public WeatherReadings() {}
 
-	public ArrayList<Weather> getQuotes() {
-		return weathers;
+	public ArrayList<WeatherReading> getQuotes() {
+		return weatherReadings;
 	}
 
-	public void setQuotes(ArrayList<Weather> weathers) {
-		this.weathers = weathers;
+	public void setQuotes(ArrayList<WeatherReading> weatherReadings) {
+		this.weatherReadings = weatherReadings;
 	}
 
 	public ZonedDateTime getCheckTime() {
@@ -30,7 +30,7 @@ public class WeatherReadings {
 	@Override
 	public String toString() {
 		return "DigitalCurrencies{" +
-				"quotes=" + weathers.toString() +
+				"quotes=" + weatherReadings.toString() +
 				", checkTime=" + checkTime.toString() +
 				'}';
 	}
