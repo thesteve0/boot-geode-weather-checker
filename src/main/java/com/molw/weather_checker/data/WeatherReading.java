@@ -9,15 +9,15 @@ public class WeatherReading {
 	private String name;
 	private Integer id;
 	private Main main;
-	private Wind win;
+	private Wind wind;
 
 	public WeatherReading() {	}
 
-	public WeatherReading(String name, Integer id, Main main, Wind win) {
+	public WeatherReading(String name, Integer id, Main main, Wind wind) {
 		this.name = name;
 		this.id = id;
 		this.main = main;
-		this.win = win;
+		this.wind = wind;
 	}
 
 	public String getName() {
@@ -44,12 +44,12 @@ public class WeatherReading {
 		this.main = main;
 	}
 
-	public Wind getWin() {
-		return win;
+	public Wind getWind() {
+		return wind;
 	}
 
-	public void setWin(Wind win) {
-		this.win = win;
+	public void setWind(Wind wind) {
+		this.wind = wind;
 	}
 }
 

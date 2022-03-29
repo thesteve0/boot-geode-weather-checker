@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 @Profile(value= "!dev" )
 public class WeatherCoordinator {
 
-    @Scheduled(fixedRate = 5, timeUnit = TimeUnit.SECONDS)
+    @Scheduled(fixedRate = 60, timeUnit = TimeUnit.SECONDS)
     public void run() throws Exception {
         WeatherFetcher weatherFetcher = new WeatherFetcher();
         System.out.println( weatherFetcher.getWeather().toString());

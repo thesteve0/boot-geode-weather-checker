@@ -24,23 +24,28 @@ public class WeatherFetcher {
 	//Also need to add the currency to the url line below
 	private static final HashMap<String, String> locations = (HashMap) Stream.of(new String[][]
 			{
-					{"name", "Santa Cruz, CA"},
-					{"ETC", "Ethereum"},
-					{"DOGE", "Dogecoin"},
-					{"RVN", "Ravencoin"},
-					{"XCH", "Chia"}
+					{"Santa Cruz, CA", "&lat=36.962421&lon=-122.023301"},
+					{"Madrid, ES", "Ethereum"},
+					{"Sydney, AU", "Dogecoin"},
+					{"Atlanta, GA", "Ravencoin"},
+					{"Denver, CO", "Chia"},
+					{"Austin, TX", "Chia"}
 			}
 		).collect(Collectors.toMap(data -> data[0], data -> data[1]));
 
-	//TODO update key information here
 	private final String openweather_key = System.getenv("openweather_api_key");
-	private final String url = "https://api.openweathermap.org/data/2.5/weather?exclude=minutely,hourly,daily,alerts&units=imperial&appid=" + openweather_key + "&lat=36.962421&lon=-122.023301";
-	private WebClient webClient = WebClient.builder()
-			.baseUrl(url)
-			.build();
+	private final String url = "https://api.openweathermap.org/data/2.5/weather?exclude=minutely,hourly,daily,alerts&units=imperial&appid=" + openweather_key;
+
 
 	//TODO given the API I think this will have to be a loop of calls rather than just one call
 	public WeatherReadings getWeather(){
+
+		//TODO There is probably a good way to add a parameter on to the end of the base URL
+		WebClient webClient = WebClient.builder()
+				.baseUrl(url + locations.get("Santa Cruz, CA"))
+				.build();
+
+		//ok basically loop through the getOnePlace call below with changing the URL each time
 		WeatherReadings currentWeathers = new WeatherReadings();
 		Mono<WeatherReading> response = webClient.get().accept(MediaType.APPLICATION_JSON)
 				.retrieve()
@@ -53,15 +58,21 @@ public class WeatherFetcher {
 		
 	}
 
-	public String getOnePlace(){
-		String response = "";
-		WeatherReading weatherReading = new WeatherReading();
-		Mono<String> monoResponse = webClient.get().accept(MediaType.APPLICATION_JSON)
-				.retrieve()
-				.bodyToMono(String.class);
+	public WeatherReading getOnePlace(){
 
-		response = monoResponse.block();
-		return response;
+		WebClient webClient = WebClient.builder()
+				.baseUrl(url + locations.get("Santa Cruz, CA"))
+				.build();
+
+		//WeatherReading response;
+		System.out.println("The URL is  = " + url);
+		WeatherReading weatherReading = new WeatherReading();
+		Mono<WeatherReading> monoResponse = webClient.get().accept(MediaType.APPLICATION_JSON)
+				.retrieve()
+				.bodyToMono(WeatherReading.class);
+
+		weatherReading = monoResponse.block();
+		return weatherReading;
 
 	}
 
