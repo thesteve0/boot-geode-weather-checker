@@ -21,7 +21,7 @@ public class WeatherCheckWS {
 	public WeatherReading checkOneWeather(){
 		WeatherFetcher wf = new WeatherFetcher();
 		//WeatherReading response = wf.getOnePlace();
-		WeatherReading response = wf.getOnePlace();
+		WeatherReading response = wf.getOneTestPlace();
 
 		return response;
 	}

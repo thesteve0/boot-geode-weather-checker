@@ -39,4 +39,13 @@ public class Main {
     public void setPressure(Integer pressure) {
         this.pressure = pressure;
     }
+
+    @Override
+    public String toString() {
+        return "Main{" +
+                "temp=" + temp +
+                ", humidity=" + humidity +
+                ", pressure=" + pressure +
+                '}';
+    }
 }

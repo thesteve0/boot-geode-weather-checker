@@ -38,4 +38,13 @@ public class Wind {
     public void setDeg(Integer deg) {
         this.deg = deg;
     }
+
+    @Override
+    public String toString() {
+        return "Wind{" +
+                "speed=" + speed +
+                ", gust=" + gust +
+                ", deg=" + deg +
+                '}';
+    }
 }

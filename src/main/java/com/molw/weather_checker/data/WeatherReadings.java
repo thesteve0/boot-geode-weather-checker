@@ -3,6 +3,9 @@ package com.molw.weather_checker.data;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
+
+//TODO probably remove this since we are not going to aggregate multiple readings into a single place
+// We will be putting them into the cache as we get them
 public class WeatherReadings {
 
 	private ArrayList<WeatherReading> weatherReadings = new ArrayList<WeatherReading>();

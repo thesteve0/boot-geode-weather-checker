@@ -51,5 +51,15 @@ public class WeatherReading {
 	public void setWind(Wind wind) {
 		this.wind = wind;
 	}
+
+	@Override
+	public String toString() {
+		return "WeatherReading{" +
+				"name='" + name + '\'' +
+				", id=" + id +
+				", main=" + main +
+				", wind=" + wind +
+				'}';
+	}
 }
 
