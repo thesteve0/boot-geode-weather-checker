@@ -13,10 +13,10 @@ import java.util.stream.Stream;
 
 @Component
 @Profile(value= "!dev" )
-public class WeatherCoordinator {
+public class WeatherCollector {
 
     /*
-     the names in the hashmap here are only for user friendliness - we will actually be using the name returned by the
+     the names in the hashmap here are only for user-friendliness - we will actually be using the name returned by the
      Openweather API as the part of the key name
      */
     private static final HashMap<String, String> locations = (HashMap) Stream.of(new String[][]
@@ -35,28 +35,33 @@ public class WeatherCoordinator {
     public void run() throws Exception {
 
         WeatherFetcher weatherFetcher = new WeatherFetcher();
+        // Todo not a fan of anonymous lambdas like this so may refactor into a method
         locations.forEach((name, coords) ->
             {
-                //do the call and get the weatherreading back
+                //do the call and get the WeatherReading back
                 WeatherReading wr = weatherFetcher.getAPlaceReading(coords);
                 System.out.println(wr);
                 //TODO if this works then here is where we put all the pieces in the cache
                 // The Key:value will be the "place_name-variable_name: {value: XXXX, timestamp: XXXXX}"
 
             });
-        /* TODO Iterate through the hashmap HERE and accumulate the results we want
-
-
-
-
-         */
 
         /* TODO now we are ready for gemfire integration
+        We are going to need this annotation on our main class
+        https://docs.spring.io/spring-boot-data-geode-build/current/reference/html5/#geode-configuration-declarative-annotations-productivity-enableclusteraware
+        and this one to configure the location of the locators
+        https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-client-server-applications
 
+        John uses the
+        org.springframework.data.repository.CrudRepository
+        To handle all his puts and gets - therefore he annotates his business class with stuff to make it work with CRUD repository.
+        We are NOT doing that. Our Pojo will just be a dumb pojo with no fancy annotations
 
+        We will annotate in our our controller class when we want to push the return to the cache.
+        https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations
 
-        once we get the data back we should just go ahead and push the data to gemfire
-        https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-put
+        This is the most relevant example
+
         basically make a new method here that
         1. goes through each quote in the list returned
         2. For each put it in the cache

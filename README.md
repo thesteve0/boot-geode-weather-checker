@@ -3,13 +3,17 @@ This is a simple Application that is intended to show using Spring Boot with Spr
 
 
 It requires an environment variable:
-1. `nomics_api_key` set to your nomics API key. It is recommended that you set this up through a configmap/secrets in the kube namespace running the service. When running locally, put in a environment variable
+1. `openweather_api_key` set to your openweather API key. It is recommended that you set this up through a configmap/secrets in the kube namespace running the service. When running locally, put in a environment variable
 2. It uses SpringBoot application profiles. If you want to run in dev mode with a web server you need to add:
     `-Dspring.profiles.active=dev`
 
     As a JVM parameter
 
-
+## requirements
+geode v 1.14.4
+Spring boot v 2.6.6
+SDG v 2.6.3
+SBDG 1.6.6
 
 @TODO 
 2. Get it to send the results as an update to our Gemfire instance

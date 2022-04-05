@@ -1,14 +1,5 @@
 package com.molw.weather_checker.sources;
 
-/*
-
-Using this API
-https://p.nomics.com/cryptocurrency-bitcoin-api
-
-
-
- */
-
 import com.molw.weather_checker.data.WeatherReading;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -18,31 +9,6 @@ public class WeatherFetcher {
 
 	private final String openweather_key = System.getenv("openweather_api_key");
 	private final String APIURL = "https://api.openweathermap.org/data/2.5/weather?exclude=minutely,hourly,daily,alerts&units=imperial&appid=" + openweather_key;
-
-
-	/*
-	This is not needed unless we want to get all the places in one webclient call. For now I will implement getting a single
-	place and let the calling object accumulate them all if it wants
-
-	public WeatherReadings getWeather(){
-
-		WebClient webClient = WebClient.builder()
-				.baseUrl(url + locations.get("Santa Cruz, CA"))
-				.build();
-
-		//ok basically loop through the getOnePlace call below with changing the URL each time
-		WeatherReadings currentWeathers = new WeatherReadings();
-		Mono<WeatherReading> response = webClient.get().accept(MediaType.APPLICATION_JSON)
-				.retrieve()
-				.bodyToMono(new ParameterizedTypeReference<WeatherReading>() {});
-
-		// currentPrices.setQuotes( (ArrayList<WeatherReading>) response.block());
-
-
-		return currentWeathers;
-		
-	}
-	 */
 
 	public WeatherReading getAPlaceReading(String latLongURLString){
 

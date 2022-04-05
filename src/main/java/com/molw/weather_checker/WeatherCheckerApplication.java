@@ -12,5 +12,5 @@ public class WeatherCheckerApplication {
 		SpringApplication.run(WeatherCheckerApplication.class, args);
 	}
 
-	//We also have a scheduled method in a class (DigiCurrencyChecker) that is set to run if we don't start in dev mode
+	//We also have a scheduled method in a class (WeatherCollector) that is set to run if we don't start in dev mode
 }
